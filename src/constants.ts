@@ -12,6 +12,7 @@ export const ROUTES = {
   SIGNUP: () => "/sign-up",
   NOT_FOUND: () => "/*",
   DASHBOARD: () => "/dashboard",
+  PRIVATE: () => "/private",
 
   TEACHER_CREATE: () => "/teacher/new",
   TEACHER_DETAILS: (id: string) => `/teachers/${id}/details`,

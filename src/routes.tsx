@@ -10,6 +10,7 @@ import SignInPage from "@/pages/Auth/SignIn";
 import SignUpPage from "@/pages/Auth/SignUp";
 import NotFoundPage from "@/pages/NotFound";
 
+
 const PrivateRoute = ({ component, ...rest }: any) => {
   const isAuthenticated = AUTH.IS_AUTHENTICATE();
 
@@ -31,8 +32,10 @@ const Routes: React.FC = () => {
         <Route path={ROUTES.SIGNIN()} element={<SignInPage />} />
         <Route path={ROUTES.SIGNUP()} element={<SignUpPage />} />
 
-        {/* <PrivateRoute exact path={ROUTES.DASHBOARD()} component={Dashboard} /> */}
         <Route path={ROUTES.DASHBOARD()} element={<Dashboard />} />
+
+        <PrivateRoute path={ROUTES.PRIVATE()} component={Dashboard} />
+
         <Route path={ROUTES.NOT_FOUND()} element={<NotFoundPage />} />
       </Switch>
     </BrowserRouter>
