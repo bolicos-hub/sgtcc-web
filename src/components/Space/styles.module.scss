@@ -1,0 +1,25 @@
+@import "@/assets/styles/global.scss";
+
+.space {
+  height: 0;
+
+  &.-x-small {
+    height: #{$baseline + $baseline / 2};
+  }
+
+  &.-small {
+    height: #{$baseline * 2};
+  }
+
+  &.-medium {
+    height: #{$baseline * 3};
+  }
+
+  &.-large {
+    height: #{$baseline * 4};
+  }
+
+  &.-x-large {
+    height: #{$baseline * 5};
+  }
+}

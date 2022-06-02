@@ -1,0 +1,40 @@
+$typographyFamilyTitle: "Roboto", sans-serif !default;
+$typographyFamilyLogo: "Caveat", sans-serif !default;
+$typographyFamilyHeader: "Archivo", sans-serif !default;
+$typographyFamilyText: "Poppins", sans-serif !default;
+
+$typographySizeXSmall: 10px !default;
+$typographySizeSmall: 20px !default;
+$typographySizeMedium: 40px !default;
+$typographySizeLarge: 60px !default;
+$typographySizeXLarge: 80px !default;
+$typographySizeXXLarge: 100px !default;
+$typographySizeXXXLarge: 150px !default;
+
+$typographyWeightExtraLight: 200 !default;
+$typographyWeightLight: 300 !default;
+$typographyWeightNormal: 400 !default;
+$typographyWeightMedium: 500 !default;
+$typographyWeightBold: 700 !default;
+
+/* stylelint-disable */
+:export {
+  typographyFamilyTitle: $typographyFamilyTitle;
+  typographyFamilyLogo: $typographyFamilyLogo;
+  typographyFamilyHeader: $typographyFamilyHeader;
+  typographyFamilyText: $typographyFamilyText;
+
+  typographySizeXSmall: $typographySizeXSmall;
+  typographySizeSmall: $typographySizeSmall;
+  typographySizeMedium: $typographySizeMedium;
+  typographySizeLarge: $typographySizeLarge;
+  typographySizeXLarge: $typographySizeXLarge;
+  typographySizeXXLarge: $typographySizeXXLarge;
+  typographySizeXXXLarge: $typographySizeXXXLarge;
+  
+  typographyWeightExtraLight: $typographyWeightExtraLight;
+  typographyWeightLight: $typographyWeightLight;
+  typographyWeightNormal: $typographyWeightNormal;
+  typographyWeightMedium: $typographyWeightMedium;
+  typographyWeightBold: $typographyWeightBold;
+}
