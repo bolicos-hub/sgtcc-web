@@ -69,6 +69,7 @@ const SignIn: React.FC = () => {
               errorMessage={touched.password && errors.password}
               onChange={handleChange}
               onBlur={handleBlur}
+              type={"password"}
             />
           </Row>
           <Space size="x-large" />
