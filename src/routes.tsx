@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes as Switch } from "react-router-dom";
-import { ROUTES } from "@/constants";
+import { ROUTES as R } from "@/constants";
 import { AUTH } from "@/helpers/Auth";
 
 // Utils PAGES
@@ -18,7 +18,7 @@ const PrivateRoute = ({ component, ...rest }: any) => {
     isAuthenticated ? (
       React.createElement(component, props)
     ) : (
-      <Navigate to={{ pathname: ROUTES.HOME() }} state={{ from: props.location }} />
+      <Navigate to={{ pathname: R.HOME() }} state={{ from: props.location }} />
     );
 
   return <Route {...rest} render={routeComponent} />;
@@ -28,15 +28,15 @@ const Routes: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={ROUTES.HOME()} element={<HomePage />} />
-        <Route path={ROUTES.SIGNIN()} element={<SignInPage />} />
-        <Route path={ROUTES.SIGNUP()} element={<SignUpPage />} />
+        <Route path={R.HOME()} element={<HomePage />} />
+        <Route path={R.SIGNIN()} element={<SignInPage />} />
+        <Route path={R.SIGNUP()} element={<SignUpPage />} />
 
-        <Route path={ROUTES.DASHBOARD()} element={<Dashboard />} />
+        <Route path={R.DASHBOARD()} element={<Dashboard />} />
 
-        <PrivateRoute path={ROUTES.PRIVATE()} component={Dashboard} />
+        <PrivateRoute path={R.PRIVATE()} component={Dashboard} />
 
-        <Route path={ROUTES.NOT_FOUND()} element={<NotFoundPage />} />
+        <Route path={R.NOT_FOUND()} element={<NotFoundPage />} />
       </Switch>
     </BrowserRouter>
   );
