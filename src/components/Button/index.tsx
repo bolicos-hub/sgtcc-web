@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import css from './css.module.scss';
 
 
-interface Props extends React.HTMLAttributes<HTMLButtonElement> {
+export interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   type?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
   fullScreen?: boolean;
