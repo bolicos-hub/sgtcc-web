@@ -1,5 +1,5 @@
 {
-  "printWidth": 120,
+  "printWidth": 180,
   "endOfLine": "lf",
   "arrowParens": "always",
   "jsxBracketSameLine": true

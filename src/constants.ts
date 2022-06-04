@@ -6,6 +6,11 @@ export const WEB_APP = {
   API_AUTH_URL: process.env.REACT_APP_API_AUTH_URL,
 };
 
+export const ADMIN_PREFIX = "/admin";
+export const MANAGER_PREFIX = "/manager";
+export const STUDENT_PREFIX = "/student";
+export const TEACHER_PREFIX = "/teacher";
+
 export const ROUTES = {
   HOME: () => "/",
   SIGNIN: () => "/sign-in",
@@ -14,24 +19,40 @@ export const ROUTES = {
   DASHBOARD: () => "/dashboard",
   PRIVATE: () => "/private",
 
-  TEACHER_CREATE: () => "/teacher/new",
-  TEACHER_DETAILS: (id: string) => `/teachers/${id}/details`,
-  TEACHER_EDIT: (id: string) => `/teachers/${id}/edit`,
+  ADMIN: () => ADMIN_PREFIX,
+  MANAGER: () => MANAGER_PREFIX,
+  STUDENT: () => STUDENT_PREFIX,
+  TEACHER: () => TEACHER_PREFIX,
+};
 
-  STUDENT_CREATE: () => "/students/new",
-  STUDENT_DETAILS: (id: string) => `/students/${id}/details`,
-  STUDENT_EDIT: (id: string) => `/students/${id}/edit`,
+export const MANAGER = {
+  STUDENTS: () => `${MANAGER_PREFIX}/students`,
+  STUDENTS_NEW: () => `${MANAGER_PREFIX}/students/new`,
+  STUDENTS_VIEW: () => `${MANAGER_PREFIX}/students/view`,
+  STUDENTS_NOTES: () => `${MANAGER_PREFIX}/students/notes`,
 
-  PROPOSAL_LIST: () => "/proposals/",  
-  PROPOSAL_CREATE: () => "/proposals/new",  
-  PROPOSAL_DETAILS: (id: string) => `/proposals/${id}/details`,
-  PROPOSAL_EDIT: (id: string) => `/proposals/${id}/edit`,
+  CLASSES: () => `${MANAGER_PREFIX}/classes`,
+  CLASSES_NEW: () => `${MANAGER_PREFIX}/classes/new`,
+  CLASSES_VIEW: () => `${MANAGER_PREFIX}/classes/view`,
+  CLASSES_NOTES: () => `${MANAGER_PREFIX}/classes/notes`,
 
-  EXAMINATION_CREATE: () => "/examinations/new",
-  EXAMINATION_DETAILS: (id: string) => `/examinations/${id}/details`,
-  EXAMINATION_EDIT: (id: string) => `/examinations/${id}/edit`,
+  PROPOSALS: () => `${MANAGER_PREFIX}/proposals`,
+  PROPOSALS_NEW: () => `${MANAGER_PREFIX}/proposals/new`,
+  PROPOSALS_VIEW: () => `${MANAGER_PREFIX}/proposals/view`,
+  PROPOSALS_NOTES: () => `${MANAGER_PREFIX}/proposals/notes`,
 
-  BOARD_CREATE: () => "/boards/new",
-  BOARD_DETAILS: (id: string) => `/boards/${id}/details`,
-  BOARD_EDIT: (id: string) => `/boards/${id}/edit`,
+  BOARDS: () => `${MANAGER_PREFIX}/boards`,
+  BOARDS_NEW: () => `${MANAGER_PREFIX}/boards/new`,
+  BOARDS_VIEW: () => `${MANAGER_PREFIX}/boards/view`,
+  BOARDS_SCHEDULED: () => `${MANAGER_PREFIX}/boards/scheduled`,
+
+  REPORTS: () => `${MANAGER_PREFIX}/reports`,
+  REPORTS_NEW: () => `${MANAGER_PREFIX}/reports/new`,
+  REPORTS_VIEW: () => `${MANAGER_PREFIX}/reports/view`,
+  REPORTS_SCHEDULED: () => `${MANAGER_PREFIX}/reports/scheduled`,
+
+  TEACHERS: () => `${MANAGER_PREFIX}/teachers`,
+  TEACHERS_NEW: () => `${MANAGER_PREFIX}/teachers/new`,
+  TEACHERS_VIEW: () => `${MANAGER_PREFIX}/teachers/view`,
+  TEACHERS_SCHEDULED: () => `${MANAGER_PREFIX}/teachers/scheduled`,
 };

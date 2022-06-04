@@ -1,27 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MANAGER as M } from "@/constants";
 import Container from "@/components/Container";
 import Loader from "@/components/Loader";
 import Title from "@/components/Title";
 import Space from "@/components/Space";
 import Row from "@/components/Row";
-import Card, { Props as CardProps } from "@/components/Card";
-
-type CardType = {
-  card: CardProps;
-  title: string;
-};
+import { CardType, newCard } from "@/helpers/Factory";
 
 const Dashboard: React.FC = () => {
+  const navigate = useNavigate();
   const [isLoading] = useState(false);
   const user = "sgtcc-prof";
-
-  const newCard = (type: CardType) => {
-    return (
-      <Card {...type.card}>
-        <Title size="h4">{type.title}</Title>
-      </Card>
-    );
-  };
 
   const CARDS = {
     STUDENTS: {
@@ -29,54 +19,60 @@ const Dashboard: React.FC = () => {
         primaryButton: {
           appearance: "primary",
           children: "Gerenciar Alunos",
-        }
+          onClick: () => navigate(M.STUDENTS()),
+        },
       },
-      title: 'Aluno',
+      title: "Aluno",
     } as CardType,
     CLASSES: {
       card: {
         primaryButton: {
           appearance: "primary",
           children: "Gerenciar Turmas",
-        }
+          onClick: () => navigate(M.CLASSES()),
+        },
       },
-      title: 'Turma',
+      title: "Turma",
     } as CardType,
     PROPOSALS: {
       card: {
         primaryButton: {
           appearance: "primary",
           children: "Gerenciar Propostas",
-        }
+          onClick: () => navigate(M.PROPOSALS()),
+        },
       },
-      title: 'Proposta',
+      title: "Proposta",
     } as CardType,
     BOARDS: {
       card: {
         primaryButton: {
           appearance: "primary",
           children: "Gerenciar Bancas",
-        }
+          onClick: () => navigate(M.BOARDS()),
+        },
       },
-      title: 'Banca',
+      title: "Banca",
     } as CardType,
     REPORTS: {
       card: {
         primaryButton: {
           appearance: "primary",
           children: "Gerenciar Relatórios",
-        }
+          onClick: () => navigate(M.REPORTS()),
+        },
       },
-      title: 'Relatório',
+      title: "Relatório",
     } as CardType,
     TEACHERS: {
       card: {
         primaryButton: {
           appearance: "primary",
           children: "Gerenciar Professores",
-        }
+          onClick: () => navigate(M.TEACHERS()),
+        },
       },
-      title: 'Professor',
+      title: "Professor",
     } as CardType,
   };
 
