@@ -13,7 +13,7 @@ const NotFound: React.FC = () => {
   const navigate = useNavigate();
   const [isLoading] = useState(false);
 
-  const handleBack = () => navigate(R.HOME());
+  const handleBack = () => navigate(R.DASHBOARD());
 
   return isLoading ? (
     <Loader show={isLoading} />
