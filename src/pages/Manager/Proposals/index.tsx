@@ -14,35 +14,35 @@ const ManagerProposals: React.FC = () => {
   const [isLoading] = useState(false);
 
   const CARDS = {
-    NEW_CLASSES: {
+    ACTIVE_PROPOSALS: {
       card: {
         primaryButton: {
           appearance: "primary",
-          children: "Criar",
-          onClick: () => navigate(M.CLASSES_NEW()),
+          children: "Ativas",
+          onClick: () => navigate(M.PROPOSALS_ACTIVE()),
         },
       },
-      title: "Criar Turma",
+      title: "Propostas Ativas",
     } as CardType,
-    VIEW_CLASSES: {
+    PENDING_PROPOSALS: {
       card: {
         primaryButton: {
           appearance: "primary",
-          children: "Ver",
-          onClick: () => navigate(M.CLASSES_VIEW()),
+          children: "Pendentes",
+          onClick: () => navigate(M.PROPOSALS_PENDING()),
         },
       },
-      title: "Ver Turma",
+      title: "Propostas Pendentes",
     } as CardType,
-    NOTES_CLASSES: {
+    HITORY_PROPOSALS: {
       card: {
         primaryButton: {
           appearance: "primary",
-          children: "Notas",
-          onClick: () => navigate(M.CLASSES_NOTES()),
+          children: "Histórico",
+          onClick: () => navigate(M.PROPOSALS_HISTORY()),
         },
       },
-      title: "Notas Turma",
+      title: "Histórico Propostas",
     } as CardType,
   };
 
@@ -51,13 +51,13 @@ const ManagerProposals: React.FC = () => {
   ) : (
     <>
       <Container>
-        <Title>Gerenciar Turmas</Title>
-        <p>Esse é o seu dashboard de acesso para gerenciar as Turmas.</p>
+        <Title>Gerenciar Propostas</Title>
+        <p>Esse é o seu dashboard de acesso para gerenciar as Propostas.</p>
         <Space size="x-large" />
         <Row>
-          {newCard(CARDS.NEW_CLASSES)}
-          {newCard(CARDS.VIEW_CLASSES)}
-          {newCard(CARDS.NOTES_CLASSES)}
+          {newCard(CARDS.ACTIVE_PROPOSALS)}
+          {newCard(CARDS.PENDING_PROPOSALS)}
+          {newCard(CARDS.HITORY_PROPOSALS)}
         </Row>
         <Space />
         <Row>

@@ -26,10 +26,10 @@ export const ROUTES = {
 };
 
 export const MANAGER = {
-  STUDENTS: () => `${MANAGER_PREFIX}/students`,
-  STUDENTS_NEW: () => `${MANAGER_PREFIX}/students/new`,
-  STUDENTS_VIEW: () => `${MANAGER_PREFIX}/students/view`,
-  STUDENTS_NOTES: () => `${MANAGER_PREFIX}/students/notes`,
+  BOARDS: () => `${MANAGER_PREFIX}/boards`,
+  BOARDS_NEW: () => `${MANAGER_PREFIX}/boards/new`,
+  BOARDS_VIEW: () => `${MANAGER_PREFIX}/boards/view`,
+  BOARDS_SCHEDULED: () => `${MANAGER_PREFIX}/boards/scheduled`,
 
   CLASSES: () => `${MANAGER_PREFIX}/classes`,
   CLASSES_NEW: () => `${MANAGER_PREFIX}/classes/new`,
@@ -37,22 +37,22 @@ export const MANAGER = {
   CLASSES_NOTES: () => `${MANAGER_PREFIX}/classes/notes`,
 
   PROPOSALS: () => `${MANAGER_PREFIX}/proposals`,
-  PROPOSALS_NEW: () => `${MANAGER_PREFIX}/proposals/new`,
-  PROPOSALS_VIEW: () => `${MANAGER_PREFIX}/proposals/view`,
-  PROPOSALS_NOTES: () => `${MANAGER_PREFIX}/proposals/notes`,
-
-  BOARDS: () => `${MANAGER_PREFIX}/boards`,
-  BOARDS_NEW: () => `${MANAGER_PREFIX}/boards/new`,
-  BOARDS_VIEW: () => `${MANAGER_PREFIX}/boards/view`,
-  BOARDS_SCHEDULED: () => `${MANAGER_PREFIX}/boards/scheduled`,
+  PROPOSALS_ACTIVE: () => `${MANAGER_PREFIX}/proposals/active`,
+  PROPOSALS_PENDING: () => `${MANAGER_PREFIX}/proposals/pending`,
+  PROPOSALS_HISTORY: () => `${MANAGER_PREFIX}/proposals/history`,
 
   REPORTS: () => `${MANAGER_PREFIX}/reports`,
-  REPORTS_NEW: () => `${MANAGER_PREFIX}/reports/new`,
-  REPORTS_VIEW: () => `${MANAGER_PREFIX}/reports/view`,
-  REPORTS_SCHEDULED: () => `${MANAGER_PREFIX}/reports/scheduled`,
+  REPORTS_BOARDS: () => `${MANAGER_PREFIX}/reports/boards`,
+  REPORTS_NOTES: () => `${MANAGER_PREFIX}/reports/notes`,
+  REPORTS_STUDENTS: () => `${MANAGER_PREFIX}/reports/students`,
+
+  STUDENTS: () => `${MANAGER_PREFIX}/students`,
+  STUDENTS_NEW: () => `${MANAGER_PREFIX}/students/new`,
+  STUDENTS_VIEW: () => `${MANAGER_PREFIX}/students/view`,
+  STUDENTS_NOTES: () => `${MANAGER_PREFIX}/students/notes`,
 
   TEACHERS: () => `${MANAGER_PREFIX}/teachers`,
-  TEACHERS_NEW: () => `${MANAGER_PREFIX}/teachers/new`,
-  TEACHERS_VIEW: () => `${MANAGER_PREFIX}/teachers/view`,
-  TEACHERS_SCHEDULED: () => `${MANAGER_PREFIX}/teachers/scheduled`,
+  TEACHERS_SUGGESTIONS_NEW: () => `${MANAGER_PREFIX}/teachers/suggestions/new`,
+  TEACHERS_INTEREST_AREAS_NEW: () => `${MANAGER_PREFIX}/teachers/interest-areas/new`,
+  TEACHERS_INTEREST_AREAS_LINK: () => `${MANAGER_PREFIX}/teachers/interest-areas/link`,
 };

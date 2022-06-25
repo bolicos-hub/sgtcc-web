@@ -9,40 +9,40 @@ import Space from "@/components/Space";
 import Row from "@/components/Row";
 import Button from "@/components/Button";
 
-const ManagerProposals: React.FC = () => {
+const ManagerStudents: React.FC = () => {
   const navigate = useNavigate();
   const [isLoading] = useState(false);
 
   const CARDS = {
-    BOARDS_REPORTS: {
+    NEW_STUDENTS: {
       card: {
         primaryButton: {
           appearance: "primary",
-          children: "Bancas",
-          onClick: () => navigate(M.REPORTS_BOARDS()),
+          children: "Criar",
+          onClick: () => navigate(M.STUDENTS_NEW()),
         },
       },
-      title: "Relatório Bancas",
+      title: "Criar Aluno",
     } as CardType,
-    NOTES_REPORTS: {
+    VIEW_STUDENTS: {
+      card: {
+        primaryButton: {
+          appearance: "primary",
+          children: "Ver",
+          onClick: () => navigate(M.STUDENTS_VIEW()),
+        },
+      },
+      title: "Ver Aluno",
+    } as CardType,
+    NOTES_STUDENTS: {
       card: {
         primaryButton: {
           appearance: "primary",
           children: "Notas",
-          onClick: () => navigate(M.REPORTS_NOTES()),
+          onClick: () => navigate(M.STUDENTS_NOTES()),
         },
       },
-      title: "Relatório Notas",
-    } as CardType,
-    STUDENTS_REPORTS: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Alunos",
-          onClick: () => navigate(M.REPORTS_STUDENTS()),
-        },
-      },
-      title: "Relatório Alunos",
+      title: "Notas Alunos",
     } as CardType,
   };
 
@@ -51,13 +51,13 @@ const ManagerProposals: React.FC = () => {
   ) : (
     <>
       <Container>
-        <Title>Gerenciar Relatórios</Title>
-        <p>Esse é o seu dashboard de acesso para gerenciar as Relatórios.</p>
+        <Title>Gerenciar Alunos</Title>
+        <p>Esse é o seu dashboard de acesso para gerenciar os Alunos.</p>
         <Space size="x-large" />
         <Row>
-          {newCard(CARDS.BOARDS_REPORTS)}
-          {newCard(CARDS.NOTES_REPORTS)}
-          {newCard(CARDS.STUDENTS_REPORTS)}
+          {newCard(CARDS.NEW_STUDENTS)}
+          {newCard(CARDS.VIEW_STUDENTS)}
+          {newCard(CARDS.NOTES_STUDENTS)}
         </Row>
         <Space />
         <Row>
@@ -70,4 +70,4 @@ const ManagerProposals: React.FC = () => {
   );
 };
 
-export default ManagerProposals;
+export default ManagerStudents;

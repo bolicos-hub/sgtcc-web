@@ -32,7 +32,7 @@ const ManagerBoards: React.FC = () => {
           onClick: () => navigate(M.BOARDS_VIEW()),
         },
       },
-      title: "Ver Banca",
+      title: "Ver Bancas",
     } as CardType,
     SCHEDULED_BOARDS: {
       card: {
@@ -51,8 +51,8 @@ const ManagerBoards: React.FC = () => {
   ) : (
     <>
       <Container>
-        <Title>Gerenciar Turmas</Title>
-        <p>Esse é o seu dashboard de acesso para gerenciar as Turmas.</p>
+        <Title>Gerenciar Bancas</Title>
+        <p>Esse é o seu dashboard de acesso para gerenciar as Bancas.</p>
         <Space size="x-large" />
         <Row>
           {newCard(CARDS.NEW_BOARDS)}

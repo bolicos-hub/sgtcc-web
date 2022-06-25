@@ -9,12 +9,35 @@ import SignInPage from "@/pages/Auth/SignIn";
 import SignUpPage from "@/pages/Auth/SignUp";
 import NotFoundPage from "@/pages/NotFound";
 
-import ManagerStudents from "@/pages/Manager/Students";
-import ManagerClasses from "@/pages/Manager/Classes";
-import ManagerProposals from "@/pages/Manager/Proposals";
 import ManagerBoards from "@/pages/Manager/Boards";
+import ManagerBoardNew from "@/pages/Manager/BoardNew";
+import ManagerBoardScheduled from "@/pages/Manager/BoardScheduled";
+import ManagerBoardView from "@/pages/Manager/BoardView";
+
+import ManagerClasses from "@/pages/Manager/Classes";
+import ManagerClassNew from "@/pages/Manager/ClassNew";
+import ManagerClassNotes from "@/pages/Manager/ClassNotes";
+import ManagerClassView from "@/pages/Manager/ClassView";
+
+import ManagerProposals from "@/pages/Manager/Proposals";
+import ManagerProposalActive from "@/pages/Manager/ProposalActive";
+import ManagerProposalHistory from "@/pages/Manager/ProposalHistory";
+import ManagerProposalPending from "@/pages/Manager/ProposalPending";
+
 import ManagerReports from "@/pages/Manager/Reports";
+import ManagerReportBoards from "@/pages/Manager/ReportBoards";
+import ManagerReportNotes from "@/pages/Manager/ReportNotes";
+import ManagerReportStudents from "@/pages/Manager/ReportStudents";
+
+import ManagerStudents from "@/pages/Manager/Students";
+import ManagerStudentNew from "@/pages/Manager/StudentNew";
+import ManagerStudentNotes from "@/pages/Manager/StudentNotes";
+import ManagerStudentView from "@/pages/Manager/StudentView";
+
 import ManagerTeachers from "@/pages/Manager/Teachers";
+import ManagerTeacherInterestAreasLink from "@/pages/Manager/TeacherInterestAreasLink";
+import ManagerTeacherInterestAreasNew from "@/pages/Manager/TeacherInterestAreasNew";
+import ManagerTeacherSuggestionsNew from "@/pages/Manager/TeacherSuggestionsNew";
 
 const Routes: React.FC = () => {
   return (
@@ -30,35 +53,35 @@ const Routes: React.FC = () => {
         <Route path={R.STUDENT()} element={<NotFoundPage />} />
         <Route path={R.TEACHER()} element={<NotFoundPage />} />
 
-        <Route path={M.STUDENTS()} element={<ManagerStudents />} />
-        <Route path={M.STUDENTS_NEW()} element={<NotFoundPage />} />
-        <Route path={M.STUDENTS_VIEW()} element={<NotFoundPage />} />
-        <Route path={M.STUDENTS_NOTES()} element={<NotFoundPage />} />
+        <Route path={M.BOARDS()} element={<ManagerBoards />} />
+        <Route path={M.BOARDS_NEW()} element={<ManagerBoardNew />} />
+        <Route path={M.BOARDS_SCHEDULED()} element={<ManagerBoardScheduled />} />
+        <Route path={M.BOARDS_VIEW()} element={<ManagerBoardView />} />
 
         <Route path={M.CLASSES()} element={<ManagerClasses />} />
-        <Route path={M.CLASSES_NEW()} element={<NotFoundPage />} />
-        <Route path={M.CLASSES_VIEW()} element={<NotFoundPage />} />
-        <Route path={M.CLASSES_NOTES()} element={<NotFoundPage />} />
+        <Route path={M.CLASSES_NEW()} element={<ManagerClassNew />} />
+        <Route path={M.CLASSES_NOTES()} element={<ManagerClassNotes />} />
+        <Route path={M.CLASSES_VIEW()} element={<ManagerClassView />} />
 
         <Route path={M.PROPOSALS()} element={<ManagerProposals />} />
-        <Route path={M.PROPOSALS_NEW()} element={<NotFoundPage />} />
-        <Route path={M.PROPOSALS_VIEW()} element={<NotFoundPage />} />
-        <Route path={M.PROPOSALS_NOTES()} element={<NotFoundPage />} />
-
-        <Route path={M.BOARDS()} element={<ManagerBoards />} />
-        <Route path={M.BOARDS_NEW()} element={<NotFoundPage />} />
-        <Route path={M.BOARDS_VIEW()} element={<NotFoundPage />} />
-        <Route path={M.BOARDS_SCHEDULED()} element={<NotFoundPage />} />
+        <Route path={M.PROPOSALS_ACTIVE()} element={<ManagerProposalActive />} />
+        <Route path={M.PROPOSALS_HISTORY()} element={<ManagerProposalHistory />} />
+        <Route path={M.PROPOSALS_PENDING()} element={<ManagerProposalPending />} />
 
         <Route path={M.REPORTS()} element={<ManagerReports />} />
-        <Route path={M.REPORTS_NEW()} element={<NotFoundPage />} />
-        <Route path={M.REPORTS_VIEW()} element={<NotFoundPage />} />
-        <Route path={M.REPORTS_SCHEDULED()} element={<NotFoundPage />} />
+        <Route path={M.REPORTS_BOARDS()} element={<ManagerReportBoards />} />
+        <Route path={M.REPORTS_NOTES()} element={<ManagerReportNotes />} />
+        <Route path={M.REPORTS_STUDENTS()} element={<ManagerReportStudents />} />
 
+        <Route path={M.STUDENTS()} element={<ManagerStudents />} />
+        <Route path={M.STUDENTS_NEW()} element={<ManagerStudentNew />} />
+        <Route path={M.STUDENTS_NOTES()} element={<ManagerStudentNotes />} />
+        <Route path={M.STUDENTS_VIEW()} element={<ManagerStudentView />} />
+        
         <Route path={M.TEACHERS()} element={<ManagerTeachers />} />
-        <Route path={M.TEACHERS_NEW()} element={<NotFoundPage />} />
-        <Route path={M.TEACHERS_VIEW()} element={<NotFoundPage />} />
-        <Route path={M.TEACHERS_SCHEDULED()} element={<NotFoundPage />} />
+        <Route path={M.TEACHERS_INTEREST_AREAS_LINK()} element={<ManagerTeacherInterestAreasLink />} />
+        <Route path={M.TEACHERS_INTEREST_AREAS_NEW()} element={<ManagerTeacherInterestAreasNew />} />
+        <Route path={M.TEACHERS_SUGGESTIONS_NEW()} element={<ManagerTeacherSuggestionsNew />} />
 
         <Route path={R.NOT_FOUND()} element={<NotFoundPage />} />
       </Switch>

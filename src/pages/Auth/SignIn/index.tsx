@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import * as Yup from "yup";
+
+import { ROUTES as R } from "@/constants";
 import Loader from "@/components/Loader";
 import Container from "@/components/Container";
 import Title from "@/components/Title";
@@ -8,8 +11,7 @@ import Space from "@/components/Space";
 import Row from "@/components/Row";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
-import { ROUTES } from "@/constants";
-import * as Yup from "yup";
+
 
 interface Values {
   username: string;
@@ -37,8 +39,8 @@ const SignIn: React.FC = () => {
     },
   });
 
-  const backToHome = () => navigate(ROUTES.HOME());
-  const forwardToDashboard = () => navigate(ROUTES.DASHBOARD());
+  const backToHome = () => navigate(R.HOME());
+  const forwardToDashboard = () => navigate(R.DASHBOARD());
 
   return isLoading ? (
     <Loader show={isLoading} />

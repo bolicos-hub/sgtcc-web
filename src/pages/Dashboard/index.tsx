@@ -14,15 +14,15 @@ const Dashboard: React.FC = () => {
   const user = "sgtcc-prof";
 
   const CARDS = {
-    STUDENTS: {
+    BOARDS: {
       card: {
         primaryButton: {
           appearance: "primary",
-          children: "Gerenciar Alunos",
-          onClick: () => navigate(M.STUDENTS()),
+          children: "Gerenciar Bancas",
+          onClick: () => navigate(M.BOARDS()),
         },
       },
-      title: "Aluno",
+      title: "Banca",
     } as CardType,
     CLASSES: {
       card: {
@@ -44,16 +44,6 @@ const Dashboard: React.FC = () => {
       },
       title: "Proposta",
     } as CardType,
-    BOARDS: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Gerenciar Bancas",
-          onClick: () => navigate(M.BOARDS()),
-        },
-      },
-      title: "Banca",
-    } as CardType,
     REPORTS: {
       card: {
         primaryButton: {
@@ -63,6 +53,16 @@ const Dashboard: React.FC = () => {
         },
       },
       title: "Relatório",
+    } as CardType,
+    STUDENTS: {
+      card: {
+        primaryButton: {
+          appearance: "primary",
+          children: "Gerenciar Alunos",
+          onClick: () => navigate(M.STUDENTS()),
+        },
+      },
+      title: "Aluno",
     } as CardType,
     TEACHERS: {
       card: {
@@ -87,14 +87,14 @@ const Dashboard: React.FC = () => {
         <p>Esse é o seu dashboard de acesso para gerenciar os TCCs.</p>
         <Space size="x-large" />
         <Row>
-          {newCard(CARDS.STUDENTS)}
+          {newCard(CARDS.BOARDS)}
           {newCard(CARDS.CLASSES)}
           {newCard(CARDS.PROPOSALS)}
         </Row>
         <Space />
         <Row>
-          {newCard(CARDS.BOARDS)}
           {newCard(CARDS.REPORTS)}
+          {newCard(CARDS.STUDENTS)}
           {newCard(CARDS.TEACHERS)}
         </Row>
       </Container>
