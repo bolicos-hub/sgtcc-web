@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import Container from '@/components/Container';
-import Loader from '@/components/Loader';
+import * as React from "react";
+// import React, { useState } from "react";
 
+// const SignUp: React.FC = () => {
+//     const [isLoading] = useState(false);
+
+//     return isLoading
+//         ? <Loader show={isLoading} />
+//         : (<>
+//             <Container>
+//                 {"SIGN_UP"}
+//             </Container>
+//         </>);
+// }
+
+// export default SignUp;
 
 const SignUp: React.FC = () => {
-    const [isLoading] = useState(false);
-
-    return isLoading
-        ? <Loader show={isLoading} />
-        : (<>
-            <Container>
-                {"SIGN_UP"}
-            </Container>
-        </>);
-}
+  return <>SignUp</>;
+};
 
 export default SignUp;

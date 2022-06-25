@@ -6,6 +6,19 @@ export const WEB_APP = {
   API_AUTH_URL: process.env.REACT_APP_API_AUTH_URL,
 };
 
+export const MUI_ROUTES = {
+  HOME: () => "/",
+  NOT_FOUND: () => "/*",
+  SIGNIN: () => "/sign-in",
+  SIGNUP: () => "/sign-up",
+  STUDENTS: () => "/students",
+  TEACHERS: () => "/teachers",
+  BOARDS: () => "/boards",
+  CLASSES: () => "/classes",
+  REPORTS: () => "/reports",
+  PROPOSALS: () => "/proposals",
+};
+
 export const ADMIN_PREFIX = "/admin";
 export const MANAGER_PREFIX = "/manager";
 export const STUDENT_PREFIX = "/student";

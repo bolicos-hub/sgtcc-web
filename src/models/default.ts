@@ -1,4 +1,4 @@
 export interface DefaultState {
-    loading: boolean;
-    title: string;
-  }
+  loading: boolean;
+  title: string;
+}

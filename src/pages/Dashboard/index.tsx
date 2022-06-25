@@ -1,105 +1,61 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { MANAGER as M } from "@/constants";
-import Container from "@/components/Container";
-import Loader from "@/components/Loader";
-import Title from "@/components/Title";
-import Space from "@/components/Space";
-import Row from "@/components/Row";
-import { CardType, newCard } from "@/helpers/Factory";
+import * as React from "react";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+// import Chart from "@/pages/MuiStudent";
+// import Deposits from "@/pages/MuiTeacher";
+// import Orders from "@/pages/MuiProposal";
+import { withAppBar } from "@/hocs/withAppBar";
 
-const Dashboard: React.FC = () => {
-  const navigate = useNavigate();
-  const [isLoading] = useState(false);
-  const user = "sgtcc-prof";
+interface Props {
+  children?: React.ReactNode;
+}
 
-  const CARDS = {
-    BOARDS: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Gerenciar Bancas",
-          onClick: () => navigate(M.BOARDS()),
-        },
-      },
-      title: "Banca",
-    } as CardType,
-    CLASSES: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Gerenciar Turmas",
-          onClick: () => navigate(M.CLASSES()),
-        },
-      },
-      title: "Turma",
-    } as CardType,
-    PROPOSALS: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Gerenciar Propostas",
-          onClick: () => navigate(M.PROPOSALS()),
-        },
-      },
-      title: "Proposta",
-    } as CardType,
-    REPORTS: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Gerenciar Relatórios",
-          onClick: () => navigate(M.REPORTS()),
-        },
-      },
-      title: "Relatório",
-    } as CardType,
-    STUDENTS: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Gerenciar Alunos",
-          onClick: () => navigate(M.STUDENTS()),
-        },
-      },
-      title: "Aluno",
-    } as CardType,
-    TEACHERS: {
-      card: {
-        primaryButton: {
-          appearance: "primary",
-          children: "Gerenciar Professores",
-          onClick: () => navigate(M.TEACHERS()),
-        },
-      },
-      title: "Professor",
-    } as CardType,
-  };
+const Dashboard: React.FC<Props> = ({ ..._props }) => {
+  return (
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
+        <Grid container spacing={3}>
+          {/* Chart */}
+          <Grid item xs={12} md={8} lg={9}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                height: 240,
+              }}>
+              {/* <Chart /> */}
+              {"CHART"}
+            </Paper>
+          </Grid>
 
-  return isLoading ? (
-    <Loader show={isLoading} />
-  ) : (
-    <>
-      <Container>
-        <Title>Dashboard</Title>
-        <Title size="h2">Seja Bem vinde, {user}!</Title>
-        <Space />
-        <p>Esse é o seu dashboard de acesso para gerenciar os TCCs.</p>
-        <Space size="x-large" />
-        <Row>
-          {newCard(CARDS.BOARDS)}
-          {newCard(CARDS.CLASSES)}
-          {newCard(CARDS.PROPOSALS)}
-        </Row>
-        <Space />
-        <Row>
-          {newCard(CARDS.REPORTS)}
-          {newCard(CARDS.STUDENTS)}
-          {newCard(CARDS.TEACHERS)}
-        </Row>
-      </Container>
-    </>
+          {/* Deposits */}
+          <Grid item xs={12} md={4} lg={3}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                height: 240,
+              }}>
+              {/* <Deposits /> */}
+              {"CHART"}
+            </Paper>
+          </Grid>
+
+          {/* Recent Orders */}
+          <Grid item xs={12}>
+            <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+              {/* <Orders /> */}
+              {"CHART"}
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
 };
 
-export default Dashboard;
+export default withAppBar(Dashboard);
