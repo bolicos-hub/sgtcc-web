@@ -61,35 +61,33 @@ export const MainListItems: React.FC<Props> = ({ navigate, ..._props }) => (
   </React.Fragment>
 );
 
+const MENU_SECONDARY = {
+  tile: "Relatórios Salvos",
+};
+const MENU_SECONDARY_ITEMS = {
+  BY_CLASS: {
+    text: "Por Turma",
+  },
+  BY_SEMESTER: {
+    text: "Por Semestre",
+  },
+  REPPROED: {
+    text: "Reprovados",
+  },
+};
 export const secondaryListItems = (
   <React.Fragment>
-    {/* 1 */}
     <ListSubheader component="div" inset>
-      Saved reports
+      {MENU_SECONDARY.tile}
     </ListSubheader>
 
-    {/* 2 */}
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-
-    {/* 3 */}
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-
-    {/* 4 */}
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
+    {Object.values(MENU_SECONDARY_ITEMS).map((item) => (
+      <ListItemButton key={item.text} onClick={() => console.log(`VOCE CLICOU NO => ${item.text}`)}>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary={item.text} />
+      </ListItemButton>
+    ))}
   </React.Fragment>
 );

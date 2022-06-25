@@ -1,90 +1,83 @@
 import * as React from "react";
 import { AxiosError } from "axios";
-import { DataGrid, GridColDef, GridNativeColTypes } from "@mui/x-data-grid";
+import { GridColDef, GridNativeColTypes, GridValueGetterParams as GetterParams } from "@mui/x-data-grid";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { withAppBar } from "@/hocs/withAppBar";
 import { BFF } from "@/services/bff";
 import { SemesterDTO } from "@/models/response/semester";
-import { Stack } from "@mui/material";
-import Loader from "@/components/Loader";
+import { newDate } from "@/helpers/Dates";
+import Table from "@/components/Table";
+import { generateError } from "@/helpers/Errors";
+import { Button, Stack, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 interface State {
   semesters: Array<SemesterDTO>;
-  size: number;
-  rowsPerPage: Array<number>;
+  newModal: boolean;
 }
 
+type Field = keyof State;
+
 const Classes: React.FC = () => {
+  const DATE_TIME_TYPE_COL: GridNativeColTypes = "dateTime";
+  const KEY = "classes-key-table";
+  const TITLE = `Gerenciar Turmas`;
+  const NEW_SEMESTER = `Novo Semestre`;
+
+  const firstRender = React.useRef(true);
   const [isLoading, setLoading] = React.useState<boolean>(false);
   const [state, setState] = React.useState<State>({
     semesters: [],
-    size: 10,
-    rowsPerPage: [5, 10, 20],
+    newModal: false,
   });
-
-  const createdAtType: GridNativeColTypes = "dateTime";
-  const messageNoRows = "Nenhuma linha";
-  const messageNoResults = "Nenhum Resultado foi encontrado";
+  const updateState = <F extends Field>(field: F, value: any) => setState((prev) => ({ ...prev, [field]: value }));
+  const handleNew = () => updateState("newModal", true);
 
   const fetchSemesters = React.useCallback(() => {
     setLoading(true);
     BFF.SEMESTER.LIST()
-      .then((response) => {
-        setState((prev) => ({
-          ...prev,
-          semesters: response.data,
-        }));
-      })
-      .catch((exception: AxiosError) => {
-        console.error("ERROR: FETCH SEMESTERS");
-        console.warn(`MESSAGE => ${exception.message}`);
-        console.warn(`CAUSE => ${exception.cause}`);
-        console.warn(`STATUS => ${exception.status}`);
-      })
+      .then((response) => updateState("semesters", response.data))
+      .catch((exception: AxiosError) => generateError(exception))
       .finally(() => setLoading(false));
   }, []);
 
   React.useEffect(() => {
-    fetchSemesters();
+    if (firstRender.current) {
+      firstRender.current = false;
+      fetchSemesters();
+    }
   }, [fetchSemesters]);
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", sortable: true, width: 100 },
-    { field: "name", headerName: "Nome", width: 150 },
+    { field: "name", headerName: "Nome", width: 200 },
     {
       field: "createdAt",
       headerName: "Criado Em",
-      type: createdAtType,
+      type: DATE_TIME_TYPE_COL,
       sortable: true,
-      width: 150,
+      width: 200,
+      valueGetter: (params: GetterParams) => {
+        const date = params.row.createdAt;
+        return newDate(date);
+      },
     },
   ];
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <DataGrid
-          rows={state.semesters}
-          columns={columns}
-          pageSize={state.size}
-          rowsPerPageOptions={state.rowsPerPage}
-          checkboxSelection={true}
-          autoHeight={true}
-          components={{
-            NoRowsOverlay: () => (
-              <Stack height="100%" alignItems="center" justifyContent="center">
-                {messageNoRows}
-              </Stack>
-            ),
-            NoResultsOverlay: () => (
-              <Stack height="100%" alignItems="center" justifyContent="center">
-                {messageNoResults}
-              </Stack>
-            ),
-            LoadingOverlay: () => <Loader open={isLoading} />,
-          }}
-        />
+    <Container>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+        <Typography variant="h4" gutterBottom>
+          {TITLE}
+        </Typography>
+        <Button variant="contained" onClick={handleNew} startIcon={<AddIcon />}>
+          {NEW_SEMESTER}
+        </Button>
+      </Stack>
+
+      <Box sx={{ my: 8 }}>
+        <Table key={KEY} isLoading={isLoading} columns={columns} data={state.semesters} />
       </Box>
     </Container>
   );
