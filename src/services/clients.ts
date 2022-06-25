@@ -13,7 +13,7 @@ const AxiosAuthConfiguration = {
   baseURL: WEB_APP.API_AUTH_URL,
 };
 
-export const bff = axios.create({
+export const BFF_CLIENT = axios.create({
   baseURL: AxiosBFFConfiguration.baseURL,
 });
 

@@ -1,34 +1,37 @@
 export const ENDPOINTS = {
   SIGN_IN: () => "/api/login",
-  
-  TYPE_LIST: () => "/api/v1/types",
 
-  TITLE_LIST: () => "/api/v1/titles",
+  SEMESTERS: "/api/semesters",
+  SEMESTERS_ID: (id: number) => `/api/semesters/${id}`,
 
-  CLASS_LIST: () => "/api/v1/classes",
+  TYPE_LIST: () => "/api/types",
 
-  TEACHER_LIST: () => "/api/v1/teachers",
-  TEACHER_CREATE: () => "/api/v1/teachers",
-  TEACHER_DETAILS: (id: string) => `/api/v1/teachers/${id}`,
-  TEACHER_EDIT: (id: string) => `/api/v1/teachers/${id}`,
+  TITLE_LIST: () => "/api/titles",
 
-  STUDENT_LIST: () => "/api/v1/students",
-  STUDENT_CREATE: () => "/api/v1/students",
-  STUDENT_DETAILS: (id: string) => `/api/v1/students/${id}`,
-  STUDENT_EDIT: (id: string) => `/api/v1/students/${id}`,
+  CLASS_LIST: () => "/api/classes",
 
-  PROPOSAL_LIST: () => "/api/v1/proposals",
-  PROPOSAL_CREATE: () => "/api/v1/proposals",
-  PROPOSAL_DETAILS: (id: string) => `/api/v1/proposals/${id}`,
-  PROPOSAL_EDIT: (id: string) => `/api/v1/proposals/${id}`,
+  TEACHER_LIST: () => "/api/teachers",
+  TEACHER_CREATE: () => "/api/teachers",
+  TEACHER_DETAILS: (id: string) => `/api/teachers/${id}`,
+  TEACHER_EDIT: (id: string) => `/api/teachers/${id}`,
 
-  EXAMINATION_CREATE: () => "/api/v1/examinations",
-  EXAMINATION_DETAILS: (id: string) => `/api/v1/examinations/${id}`,
-  EXAMINATION_EDIT: (id: string) => `/api/v1/examinations/${id}`,
+  STUDENT_LIST: () => "/api/students",
+  STUDENT_CREATE: () => "/api/students",
+  STUDENT_DETAILS: (id: string) => `/api/students/${id}`,
+  STUDENT_EDIT: (id: string) => `/api/students/${id}`,
 
-  BOARD_CREATE: () => "/api/v1/boards",
-  BOARD_DETAILS: (id: string) => `/api/v1/boards/${id}`,
-  BOARD_EDIT: (id: string) => `/api/v1/boards/${id}`,
+  PROPOSAL_LIST: () => "/api/proposals",
+  PROPOSAL_CREATE: () => "/api/proposals",
+  PROPOSAL_DETAILS: (id: string) => `/api/proposals/${id}`,
+  PROPOSAL_EDIT: (id: string) => `/api/proposals/${id}`,
+
+  EXAMINATION_CREATE: () => "/api/examinations",
+  EXAMINATION_DETAILS: (id: string) => `/api/examinations/${id}`,
+  EXAMINATION_EDIT: (id: string) => `/api/examinations/${id}`,
+
+  BOARD_CREATE: () => "/api/boards",
+  BOARD_DETAILS: (id: string) => `/api/boards/${id}`,
+  BOARD_EDIT: (id: string) => `/api/boards/${id}`,
 };
 
 export default ENDPOINTS;
