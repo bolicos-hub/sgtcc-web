@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ROUTES as R } from "@/constants";
+import * as React from "react";
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { ROUTES as R } from "@/constants";
 
 // const NotFound: React.FC = () => {
 //   const navigate = useNavigate();
