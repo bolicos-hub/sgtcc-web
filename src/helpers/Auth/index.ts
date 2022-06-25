@@ -1,5 +1,5 @@
 import TOKEN from "@/helpers/Token/index";
-import { UserPrincipal } from "@/models/model/user";
+import { UserPrincipal } from "@/models/dto/auth";
 
 const TOKEN_KEY = "token";
 const TOKEN_SECRET = "auth-api";

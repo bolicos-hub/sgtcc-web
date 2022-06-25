@@ -1,3 +1,7 @@
+export type Created = {
+  id: number;
+};
+
 export type JwtTokenDecoded = {
   roles: Array<Roles>;
   username: string;

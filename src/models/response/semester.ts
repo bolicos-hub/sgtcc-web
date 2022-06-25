@@ -1,4 +1,4 @@
-export type StudentCreated = {
+export type SemesterCreate = {
   cpf: string;
   email: string;
   name: string;

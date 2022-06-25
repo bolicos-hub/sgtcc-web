@@ -32,7 +32,7 @@ import * as React from "react";
 // export default NotFound;
 
 const NotFound: React.FC = () => {
-  return <></>;
+  return <>NOT_FOUND</>;
 };
 
 export default NotFound;
