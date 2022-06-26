@@ -1,6 +1,6 @@
-import * as DTO from "@/models/dto/global";
-import { SemesterCreated } from "@/models/request/semester";
-import { SemesterDTO } from "@/models/response/semester";
+import * as DTO from "@/models/global";
+import * as REQ from "@/models/request";
+import * as RES from "@/models/response";
 import { List, Object, BFF_CLIENT } from "./clients";
 import E from "./endpoints";
 
@@ -9,8 +9,8 @@ const POST = <DTO>(path: string, body: any) => BFF_CLIENT.post<DTO>(path, body);
 
 export const BFF = {
   SEMESTER: {
-    LIST: (): List<SemesterDTO> => GET(E.SEMESTERS),
-    CREATE: (body: SemesterCreated): Object<DTO.Created> => POST(E.SEMESTERS, body),
+    LIST: (): List<RES.SemesterDTO> => GET(E.SEMESTERS),
+    CREATE: (body: REQ.SemesterCreated): Object<DTO.Created> => POST(E.SEMESTERS, body),
   },
   TYPE: {
     TYPE_LIST: (): List<string> => BFF_CLIENT.get<Array<string>>(E.TYPE_LIST()),
@@ -19,7 +19,7 @@ export const BFF = {
     TITLE_LIST: (): List<string> => BFF_CLIENT.get<Array<string>>(E.TITLE_LIST()),
   },
   CLASS: {
-    CLASS_LIST: (): List<string> => BFF_CLIENT.get<Array<string>>(E.CLASS_LIST()),
+    LIST: (): List<RES.ClassDTO> => GET(E.CLASS_LIST),
   },
   TEACHER: {
     TEACHER_LIST: (): List<string> => BFF_CLIENT.get<Array<string>>(E.TEACHER_LIST()),

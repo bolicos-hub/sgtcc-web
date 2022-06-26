@@ -3,9 +3,6 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-// import Chart from "@/pages/MuiStudent";
-// import Deposits from "@/pages/MuiTeacher";
-// import Orders from "@/pages/MuiProposal";
 import { withAppBar } from "@/hocs/withAppBar";
 
 interface Props {

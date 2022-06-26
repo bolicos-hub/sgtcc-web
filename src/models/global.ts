@@ -3,7 +3,7 @@ export type BaseDTO = BaseModelDTO & {
 };
 
 export type BaseModelDTO = {
-  createdAt: Date;
+  createdAt: string;
 };
 
 export type Created = {

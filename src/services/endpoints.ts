@@ -8,7 +8,7 @@ export const ENDPOINTS = {
 
   TITLE_LIST: () => "/api/titles",
 
-  CLASS_LIST: () => "/api/classes",
+  CLASS_LIST: "/api/classes",
 
   TEACHER_LIST: () => "/api/teachers",
   TEACHER_CREATE: () => "/api/teachers",

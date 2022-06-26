@@ -1,34 +1,30 @@
 import * as React from "react";
 import { AxiosError } from "axios";
-import { GridColDef, GridNativeColTypes, GridValueGetterParams as GetterParams } from "@mui/x-data-grid";
 import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
 import { withAppBar } from "@/hocs/withAppBar";
 import { BFF } from "@/services/bff";
-import { SemesterDTO } from "@/models/response/semester";
-import { newDate } from "@/helpers/Dates";
+import * as RES from "@/models/response";
 import Table from "@/components/Table";
 import { generateError } from "@/helpers/Errors";
 import { Button, Stack, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import Tabs from "@/components/Tabs";
+import * as C from "./constants";
 
 interface State {
-  semesters: Array<SemesterDTO>;
+  semesters: Array<RES.SemesterDTO>;
+  classes: Array<RES.ClassDTO>;
   newModal: boolean;
 }
 
 type Field = keyof State;
 
 const Classes: React.FC = () => {
-  const DATE_TIME_TYPE_COL: GridNativeColTypes = "dateTime";
-  const KEY = "classes-key-table";
-  const TITLE = `Gerenciar Turmas`;
-  const NEW_SEMESTER = `Novo Semestre`;
-
   const firstRender = React.useRef(true);
   const [isLoading, setLoading] = React.useState<boolean>(false);
   const [state, setState] = React.useState<State>({
     semesters: [],
+    classes: [],
     newModal: false,
   });
   const updateState = <F extends Field>(field: F, value: any) => setState((prev) => ({ ...prev, [field]: value }));
@@ -42,43 +38,49 @@ const Classes: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  const fetchClasses = React.useCallback(() => {
+    setLoading(true);
+    BFF.CLASS.LIST()
+      .then((response) => updateState("classes", response.data))
+      .catch((exception: AxiosError) => generateError(exception))
+      .finally(() => setLoading(false));
+  }, []);
+
   React.useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
       fetchSemesters();
+      fetchClasses();
     }
-  }, [fetchSemesters]);
+  }, [fetchSemesters, fetchClasses]);
 
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", sortable: true, width: 100 },
-    { field: "name", headerName: "Nome", width: 200 },
+  const TAB_ITEMS = [
     {
-      field: "createdAt",
-      headerName: "Criado Em",
-      type: DATE_TIME_TYPE_COL,
-      sortable: true,
-      width: 200,
-      valueGetter: (params: GetterParams) => {
-        const date = params.row.createdAt;
-        return newDate(date);
-      },
+      label: "SEMESTRES",
+      child: <Table key={C.KEY} isLoading={isLoading} columns={C.S_COLUMNS} data={state.semesters} />,
+    },
+    {
+      label: "TURMAS",
+      child: <Table key={C.KEY} isLoading={isLoading} columns={C.C_COLUMNS} data={state.classes} />,
+    },
+    {
+      label: "CRIANDO",
+      child: "",
     },
   ];
-
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4" gutterBottom>
-          {TITLE}
+          {C.TITLE}
         </Typography>
         <Button variant="contained" onClick={handleNew} startIcon={<AddIcon />}>
-          {NEW_SEMESTER}
+          {C.NEW_SEMESTER}
         </Button>
       </Stack>
-
-      <Box sx={{ my: 8 }}>
-        <Table key={KEY} isLoading={isLoading} columns={columns} data={state.semesters} />
-      </Box>
+      <Stack>
+        <Tabs items={TAB_ITEMS} />
+      </Stack>
     </Container>
   );
 };
