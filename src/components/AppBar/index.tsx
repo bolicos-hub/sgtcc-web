@@ -36,15 +36,16 @@ interface Props {
   children?: React.ReactNode;
   toggleDrawer: () => void;
   open: boolean;
+  name: string;
 }
 
-const Menu: React.FC<Props> = ({ toggleDrawer, open, ..._props }) => {
+const Menu: React.FC<Props> = ({ toggleDrawer, open, name }) => {
   return (
     <>
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
-            pr: "24px", // keep right padding when drawer closed
+            pr: "24px",
           }}>
           <IconButton
             edge="start"
@@ -58,7 +59,7 @@ const Menu: React.FC<Props> = ({ toggleDrawer, open, ..._props }) => {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Dashboard
+            {name}
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={9} color="secondary">

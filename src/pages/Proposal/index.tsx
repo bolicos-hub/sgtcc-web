@@ -16,4 +16,4 @@ const Proposals: React.FC = () => {
   );
 };
 
-export default withAppBar(Proposals);
+export default withAppBar(Proposals, "Propostas");

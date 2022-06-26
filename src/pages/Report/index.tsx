@@ -16,4 +16,4 @@ const Reports: React.FC = () => {
   );
 };
 
-export default withAppBar(Reports);
+export default withAppBar(Reports, "Relatorios");

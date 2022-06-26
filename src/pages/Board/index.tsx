@@ -16,4 +16,4 @@ const Boards: React.FC = () => {
   );
 };
 
-export default withAppBar(Boards);
+export default withAppBar(Boards, "Bancas");

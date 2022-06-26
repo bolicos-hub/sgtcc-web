@@ -1,12 +1,25 @@
 import { newDate } from "@/helpers/Dates";
-import { GridColDef, GridNativeColTypes, GridValueGetterParams as GetterParams } from "@mui/x-data-grid";
+import { GridColDef, GridNativeColTypes, GridValueGetterParams as GetParams } from "@mui/x-data-grid";
 import * as RES from "@/models/response";
 
 export const DATE_TIME_TYPE_COL: GridNativeColTypes = "dateTime";
 export const KEY = "classes-key-table";
 export const TITLE = `Gerenciar Turmas`;
-export const NEW = `Criar Novo`;
+export const NEW = `Novo`;
 export const BACK = `Voltar`;
+export const HTML_ID = {
+  BOX: "semester-box",
+  FORM: "semester-form",
+  FIELD_NAME: "name",
+  BUTTON_ADD: "button-semester-add",
+  BUTTON_BACK: "button-semester-back",
+  BUTTON_SAVE: "button-semester-form",
+};
+
+export const HTML_LABELLEDBY = {
+  BUTTON_ADD: "button-semester-add",
+  BUTTON_BACK: "button-semester-back",
+};
 
 export const S_COLUMNS: GridColDef[] = [
   { field: "id", headerName: "ID", sortable: true, width: 100 },
@@ -17,7 +30,7 @@ export const S_COLUMNS: GridColDef[] = [
     type: DATE_TIME_TYPE_COL,
     sortable: true,
     width: 200,
-    valueGetter: (params: GetterParams) => {
+    valueGetter: (params: GetParams) => {
       const date = (params.row as RES.ClassDTO).createdAt;
       return newDate(date);
     },
@@ -27,15 +40,22 @@ export const S_COLUMNS: GridColDef[] = [
 export const C_COLUMNS: GridColDef[] = [
   { field: "id", headerName: "ID", sortable: true, width: 100 },
   { field: "name", headerName: "Nome", width: 200 },
-  //   { field: "teacherName", headerName: "Professor", width: 200 },
-  { field: "teacherId", headerName: "Professor", width: 200 },
+  {
+    field: "teacherName",
+    headerName: "Professor",
+    width: 200,
+    valueGetter: (params: GetParams) => {
+      const row = params.row as RES.ClassDTO;
+      return `${row.teacherId} - ${row.teacherName}`;
+    },
+  },
   {
     field: "semester",
     headerName: "Semestre",
     type: DATE_TIME_TYPE_COL,
     sortable: true,
     width: 200,
-    valueGetter: (params: GetterParams) => params.row.semester.name,
+    valueGetter: (params: GetParams) => (params.row as RES.ClassDTO).semester.name,
   },
   {
     field: "createdAt",
@@ -43,10 +63,7 @@ export const C_COLUMNS: GridColDef[] = [
     type: DATE_TIME_TYPE_COL,
     sortable: true,
     width: 200,
-    valueGetter: (params: GetterParams) => {
-      const date = (params.row as RES.ClassDTO).createdAt;
-      return newDate(date);
-    },
+    valueGetter: (params: GetParams) => new Date((params.row as RES.ClassDTO).createdAt),
   },
   {
     field: "students",
@@ -54,7 +71,7 @@ export const C_COLUMNS: GridColDef[] = [
     type: DATE_TIME_TYPE_COL,
     sortable: true,
     width: 200,
-    valueGetter: (params: GetterParams) => {
+    valueGetter: (params: GetParams) => {
       const students = params.row.students as Array<RES.ClassDTO>;
       return students.length || -1;
     },

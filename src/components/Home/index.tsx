@@ -8,19 +8,19 @@ import Copyright from "@/components/Copyright";
 import AppBar from "@/components/AppBar";
 import Drawer from "@/components/Drawer";
 
-
 interface Props {
   children?: React.ReactNode;
+  name: string;
 }
 
-const Home: React.FC<Props> = ({ children, ..._props }) => {
+const Home: React.FC<Props> = ({ children, name, ..._props }) => {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => setOpen(!open);
 
   return (
     <>
-      <AppBar toggleDrawer={toggleDrawer} open={open} />
+      <AppBar toggleDrawer={toggleDrawer} open={open} name={name} />
       <Drawer toggleDrawer={toggleDrawer} open={open} navigate={navigate} />
 
       <Box

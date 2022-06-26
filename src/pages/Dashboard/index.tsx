@@ -55,4 +55,4 @@ const Dashboard: React.FC<Props> = ({ ..._props }) => {
   );
 };
 
-export default withAppBar(Dashboard);
+export default withAppBar(Dashboard, "Dashboard");

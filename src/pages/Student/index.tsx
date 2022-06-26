@@ -16,4 +16,4 @@ const Students: React.FC = () => {
   );
 };
 
-export default withAppBar(Students);
+export default withAppBar(Students, "Alunos");

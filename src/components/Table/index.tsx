@@ -1,6 +1,5 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { Stack } from "@mui/material";
 import Loader from "@/components/Loader";
@@ -39,34 +38,32 @@ const Table: React.FC<Props> = ({
   const updateState = <F extends Field>(field: F, value: any) => setState((prev) => ({ ...prev, [field]: value }));
 
   return (
-    <Container>
-      <Box>
-        <DataGrid
-          rows={data}
-          columns={columns || []}
-          pageSize={state.size}
-          rowsPerPageOptions={state.rowsPerPage}
-          onPageSizeChange={(pageSize) => {
-            updateState("size", pageSize);
-          }}
-          checkboxSelection={true}
-          autoHeight={true}
-          components={{
-            NoRowsOverlay: () => (
-              <Stack height="100%" alignItems="center" justifyContent="center">
-                {messageNoRows}
-              </Stack>
-            ),
-            NoResultsOverlay: () => (
-              <Stack height="100%" alignItems="center" justifyContent="center">
-                {messageNoResults}
-              </Stack>
-            ),
-            LoadingOverlay: () => <Loader open={isLoading} />,
-          }}
-        />
-      </Box>
-    </Container>
+    <Box>
+      <DataGrid
+        rows={data}
+        columns={columns || []}
+        pageSize={state.size}
+        rowsPerPageOptions={state.rowsPerPage}
+        onPageSizeChange={(pageSize) => {
+          updateState("size", pageSize);
+        }}
+        checkboxSelection={true}
+        autoHeight={true}
+        components={{
+          NoRowsOverlay: () => (
+            <Stack height="100%" alignItems="center" justifyContent="center">
+              {messageNoRows}
+            </Stack>
+          ),
+          NoResultsOverlay: () => (
+            <Stack height="100%" alignItems="center" justifyContent="center">
+              {messageNoResults}
+            </Stack>
+          ),
+          LoadingOverlay: () => <Loader open={isLoading} />,
+        }}
+      />
+    </Box>
   );
 };
 
