@@ -8,13 +8,14 @@ import Table from "@/components/Table";
 import { generateError } from "@/helpers/Errors";
 import { Button, Stack, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Tabs from "@/components/Tabs";
 import * as C from "./constants";
 
 interface State {
   semesters: Array<RES.SemesterDTO>;
   classes: Array<RES.ClassDTO>;
-  newModal: boolean;
+  onNew: boolean;
 }
 
 type Field = keyof State;
@@ -25,10 +26,10 @@ const Classes: React.FC = () => {
   const [state, setState] = React.useState<State>({
     semesters: [],
     classes: [],
-    newModal: false,
+    onNew: false,
   });
   const updateState = <F extends Field>(field: F, value: any) => setState((prev) => ({ ...prev, [field]: value }));
-  const handleNew = () => updateState("newModal", true);
+  const handleNew = () => updateState("onNew", !state.onNew);
 
   const fetchSemesters = React.useCallback(() => {
     setLoading(true);
@@ -63,24 +64,37 @@ const Classes: React.FC = () => {
       label: "TURMAS",
       child: <Table key={C.KEY} isLoading={isLoading} columns={C.C_COLUMNS} data={state.classes} />,
     },
+  ];
+
+  const TAB_NEW_ITEMS = [
     {
-      label: "CRIANDO",
-      child: "",
+      label: "NOVO SEMESTRE",
+      child: <div>FORM DE SEMESTRES</div>,
+    },
+    {
+      label: "NOVA TURMA",
+      child: <div>FORM DE TURMAS</div>,
     },
   ];
+
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4" gutterBottom>
           {C.TITLE}
         </Typography>
-        <Button variant="contained" onClick={handleNew} startIcon={<AddIcon />}>
-          {C.NEW_SEMESTER}
-        </Button>
+
+        {state.onNew ? (
+          <Button variant="contained" onClick={handleNew} startIcon={<ArrowBackIcon />} color="error">
+            {C.BACK}
+          </Button>
+        ) : (
+          <Button variant="contained" onClick={handleNew} startIcon={<AddIcon />} color="success">
+            {C.NEW}
+          </Button>
+        )}
       </Stack>
-      <Stack>
-        <Tabs items={TAB_ITEMS} />
-      </Stack>
+      <Stack>{state.onNew ? <Tabs items={TAB_NEW_ITEMS} /> : <Tabs items={TAB_ITEMS} />}</Stack>
     </Container>
   );
 };

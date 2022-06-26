@@ -5,7 +5,8 @@ import * as RES from "@/models/response";
 export const DATE_TIME_TYPE_COL: GridNativeColTypes = "dateTime";
 export const KEY = "classes-key-table";
 export const TITLE = `Gerenciar Turmas`;
-export const NEW_SEMESTER = `Novo Semestre`;
+export const NEW = `Criar Novo`;
+export const BACK = `Voltar`;
 
 export const S_COLUMNS: GridColDef[] = [
   { field: "id", headerName: "ID", sortable: true, width: 100 },
