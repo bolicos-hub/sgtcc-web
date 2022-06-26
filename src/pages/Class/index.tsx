@@ -5,11 +5,10 @@ import * as ICONS from "@mui/icons-material";
 
 import Table from "@/components/Table";
 import Tabs from "@/components/Tabs";
-
-import { withAppBar } from "@/hocs/withAppBar";
-import { BFF } from "@/services/bff";
-import * as RES from "@/models/response";
 import { generateError } from "@/helpers/Errors";
+import { withAppBar } from "@/hocs/withAppBar";
+import * as RES from "@/models/response";
+import { BFF } from "@/services/bff";
 
 import * as C from "./constants";
 import SemesterForm from "./Form/semester";
@@ -48,57 +47,48 @@ const Classes: React.FC = () => {
     }
   }, [fetchSemesters, fetchClasses]);
 
-  const TAB_ITEMS = [
-    {
-      label: "SEMESTRES",
-      child: <Table key={C.KEY} isLoading={isLoading} columns={C.S_COLUMNS} data={state.semesters} />,
-    },
-    {
-      label: "TURMAS",
-      child: <Table key={C.KEY} isLoading={isLoading} columns={C.C_COLUMNS} data={state.classes} />,
-    },
-  ];
-
-  const TAB_NEW_ITEMS = [
-    {
-      label: "NOVO SEMESTRE",
-      child: <SemesterForm />,
-    },
-    {
-      label: "NOVA TURMA",
-      child: <ClassForm />,
-    },
-  ];
-
   const updateState = <F extends Field>(field: F, value: any) => setState((prev) => ({ ...prev, [field]: value }));
   const handleNew = () => updateState("onNew", !state.onNew);
+  const generateTabItem = (label: string, child: React.ReactNode) => ({ label: label, child: child });
   const a11yButton = (id: string, aria: string, color: ButtonColor, icon: React.ReactNode) => ({
     id: `${id}`,
     "aria-labelledby": `${aria}`,
     color: color,
     startIcon: icon,
+    variant: "contained" as ButtonVariant,
+    sx: { width: "25ch" },
   });
 
   const buttonProps = state.onNew
-    ? a11yButton(C.HTML_ID.BUTTON_BACK, C.HTML_LABELLEDBY.BUTTON_BACK, "error", <ICONS.ArrowBack />)
-    : a11yButton(C.HTML_ID.BUTTON_ADD, C.HTML_LABELLEDBY.BUTTON_ADD, "success", <ICONS.Add />);
+    ? a11yButton(C.HTML.ID.BUTTON_BACK, C.HTML.LABELLEDBY.BUTTON_BACK, "error", <ICONS.ArrowBack />)
+    : a11yButton(C.HTML.ID.BUTTON_ADD, C.HTML.LABELLEDBY.BUTTON_ADD, "success", <ICONS.Add />);
+
+  const TAB_NEW_ITEMS = [generateTabItem("NOVO SEMESTRE", <SemesterForm />), generateTabItem("NOVA TURMA", <ClassForm />)];
+  const TAB_ITEMS = [
+    generateTabItem("SEMESTRES", <Table key={C.HTML.KEY.SEMESTER_TABLE} isLoading={isLoading} columns={C.SEMESTER_COLUMNS} data={state.semesters} />),
+    generateTabItem("TURMAS", <Table key={C.HTML.KEY.CLASS_TABLE} isLoading={isLoading} columns={C.CLASS_COLUMNS} data={state.classes} />),
+  ];
 
   return (
-    <MUI.Container>
-      <MUI.Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <MUI.Typography variant="h4" gutterBottom>
-          {C.TITLE}
+    <MUI.Container id={C.HTML.ID.CONTAINER}>
+      <MUI.Stack id={C.HTML.ID.STACK_HEADER} direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+        <MUI.Typography id={C.HTML.ID.TYPOGRAFY} variant="h4" gutterBottom>
+          {C.TEXT.TITLE}
         </MUI.Typography>
 
-        <MUI.Button sx={{ width: "25ch" }} variant="contained" onClick={handleNew} {...buttonProps}>
-          {`${state.onNew ? C.BACK : C.NEW}`}
+        <MUI.Button onClick={handleNew} {...buttonProps}>
+          {state.onNew ? C.TEXT.BACK : C.TEXT.NEW}
         </MUI.Button>
       </MUI.Stack>
-      <MUI.Stack>{state.onNew ? <Tabs items={TAB_NEW_ITEMS} /> : <Tabs items={TAB_ITEMS} />}</MUI.Stack>
+
+      <MUI.Stack id={C.HTML.ID.STACK_TABLES}>
+        <Tabs items={state.onNew ? TAB_NEW_ITEMS : TAB_ITEMS} />
+      </MUI.Stack>
     </MUI.Container>
   );
 };
 
+type ButtonVariant = "contained" | "text" | "outlined" | undefined;
 type ButtonColor = "error" | "success" | "inherit" | "primary" | "secondary" | "info" | "warning" | undefined;
 type Field = keyof State;
 interface State {
