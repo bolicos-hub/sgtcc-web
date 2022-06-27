@@ -1,5 +1,5 @@
 const TEXTS = {
-  VALUE: "Your Website",
+  VALUE: "analuciabolico",
   COPYRIGHT: "Copyright © ",
 };
 

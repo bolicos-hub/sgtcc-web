@@ -7,24 +7,28 @@ export const TEXT = {
   TITLE: "Gerenciar Turmas",
   NEW: "Novo",
   BACK: "Voltar",
+  REFRESH: "Atualizar",
 };
 
 export const HTML = {
   ID: {
-    CONTAINER: "class-conatiner",
-    STACK_HEADER: "class-tack-header",
-    STACK_TABLES: "class-tack-tables",
-    TYPOGRAFY: "class-title",
-    BUTTON_ADD: "class-button-add",
-    BUTTON_BACK: "class-button-back",
+    CONTAINER: "classes-conatiner",
+    STACK_HEADER: "classes-tack-header",
+    STACK_TABLES: "classes-tack-tables",
+    STACK_BUTTONS: "classes-tack-buttons",
+    TYPOGRAFY: "classes-title",
+    BUTTON_ADD: "classes-button-add",
+    BUTTON_BACK: "classes-button-back",
+    BUTTON_REFRESH: "classes-button-refesh",
   },
   KEY: {
-    SEMESTER_TABLE: "semesters-key-table",
+    SEMESTER_TABLE: "classes-key-table",
     CLASS_TABLE: "classes-key-table",
   },
   LABELLEDBY: {
-    BUTTON_ADD: "button-semester-add",
-    BUTTON_BACK: "button-semester-back",
+    BUTTON_ADD: "classes-button-add",
+    BUTTON_BACK: "classes-button-back",
+    BUTTON_REFRESH: "classes-button-refesh",
   },
 };
 

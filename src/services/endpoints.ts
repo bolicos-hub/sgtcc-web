@@ -1,37 +1,17 @@
-export const ENDPOINTS = {
+const ENDPOINTS = {
   SIGN_IN: () => "/api/login",
 
   SEMESTERS: "/api/semesters",
   SEMESTERS_ID: (id: number) => `/api/semesters/${id}`,
 
-  TYPE_LIST: () => "/api/types",
+  CLASSES: "/api/classes",
+  CLASSES_ID: (id: number) => `/api/classes/${id}`,
 
-  TITLE_LIST: () => "/api/titles",
+  TEACHERS: "/api/teachers",
+  TEACHERS_ID: (id: number) => `/api/teachers/${id}`,
 
-  CLASS_LIST: "/api/classes",
-
-  TEACHER_LIST: () => "/api/teachers",
-  TEACHER_CREATE: () => "/api/teachers",
-  TEACHER_DETAILS: (id: string) => `/api/teachers/${id}`,
-  TEACHER_EDIT: (id: string) => `/api/teachers/${id}`,
-
-  STUDENT_LIST: () => "/api/students",
-  STUDENT_CREATE: () => "/api/students",
-  STUDENT_DETAILS: (id: string) => `/api/students/${id}`,
-  STUDENT_EDIT: (id: string) => `/api/students/${id}`,
-
-  PROPOSAL_LIST: () => "/api/proposals",
-  PROPOSAL_CREATE: () => "/api/proposals",
-  PROPOSAL_DETAILS: (id: string) => `/api/proposals/${id}`,
-  PROPOSAL_EDIT: (id: string) => `/api/proposals/${id}`,
-
-  EXAMINATION_CREATE: () => "/api/examinations",
-  EXAMINATION_DETAILS: (id: string) => `/api/examinations/${id}`,
-  EXAMINATION_EDIT: (id: string) => `/api/examinations/${id}`,
-
-  BOARD_CREATE: () => "/api/boards",
-  BOARD_DETAILS: (id: string) => `/api/boards/${id}`,
-  BOARD_EDIT: (id: string) => `/api/boards/${id}`,
+  STUDENT: "/api/students",
+  STUDENT_ID: (id: string) => `/api/students/${id}`,
 };
 
 export default ENDPOINTS;

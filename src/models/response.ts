@@ -9,6 +9,7 @@ export type StudentDTO = DTO.BaseModelDTO & {
 };
 
 export type TeacherDTO = DTO.BaseModelDTO & {
+  registration: string;
   name: string;
   email: string;
   phone: string;
