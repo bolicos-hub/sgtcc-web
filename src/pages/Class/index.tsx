@@ -55,7 +55,7 @@ const Classes: React.FC = () => {
     fetchSemesters();
     fetchClasses();
   };
-  const a11yButton = (id: string, aria: string, color: ButtonColor, icon: React.ReactNode) => ({
+  const a11yButton = (id: string, aria: string, color: ButtonColorType, icon: React.ReactNode) => ({
     id: `${id}`,
     "aria-labelledby": `${aria}`,
     color: color,
@@ -104,7 +104,7 @@ const Classes: React.FC = () => {
 };
 
 type ButtonVariant = "contained" | "text" | "outlined" | undefined;
-type ButtonColor = "error" | "success" | "inherit" | "primary" | "secondary" | "info" | "warning" | undefined;
+type ButtonColorType = "error" | "success" | "inherit" | "primary" | "secondary" | "info" | "warning" | undefined;
 type Field = keyof State;
 interface State {
   semesters: Array<RES.SemesterDTO>;
