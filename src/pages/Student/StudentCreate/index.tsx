@@ -11,19 +11,22 @@ import { generateError } from "@/helpers/Errors";
 import * as REQ from "@/models/request";
 import { BFF } from "@/services/bff";
 
-const SemesterForm: React.FC<Props> = () => {
+const StudentCreate: React.FC<Props> = () => {
   const [isLoading, setLoading] = React.useState<boolean>(false);
   const [feedback, setFeedback] = React.useState<Feedback>(INITIAL_FEEDBACK);
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit, resetForm } = useFormik<REQ.SemesterCreated>({
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit, resetForm } = useFormik<REQ.StudentCreated>({
     initialValues: INITIAL_VALUES,
     validationSchema: schema,
     onSubmit: (data) => {
-      const semester = {
+      const student = {
         name: data.name,
-      } as REQ.SemesterCreated;
+        email: data.email,
+        phone: data.phone,
+        registration: data.registration,
+      } as REQ.StudentCreated;
 
       setLoading(true);
-      BFF.SEMESTER.CREATE(semester)
+      BFF.STUDENT.CREATE(student)
         .then(() => handleSave())
         .catch((exception: AxiosError) => handleError(exception))
         .finally(() => setLoading(false));
@@ -68,8 +71,46 @@ const SemesterForm: React.FC<Props> = () => {
           helperText={touched.name && errors.name}
         />
 
+        <MUI.TextField
+          id={HTML_ID.FIELD_EMAIL}
+          label={TEXT.LABEL_EMAIL}
+          variant="filled"
+          value={values.email || ""}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          error={touched.email && !!errors.email}
+          helperText={touched.email && errors.email}
+        />
+
+        <MUI.TextField
+          id={HTML_ID.FIELD_PHONE}
+          label={TEXT.LABEL_PHONE}
+          variant="filled"
+          value={values.phone || ""}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          error={touched.phone && !!errors.phone}
+          helperText={touched.phone && errors.phone}
+        />
+
+        <MUI.TextField
+          id={HTML_ID.FIELD_REGISTRATION}
+          label={TEXT.LABEL_REGISTRATION}
+          variant="filled"
+          value={values.registration || ""}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          error={touched.registration && !!errors.registration}
+          helperText={touched.registration && errors.registration}
+        />
+
         <MUI.Stack id={HTML_ID.BUTTONS} spacing={2}>
-          <MUI.Button id={HTML_ID.BUTTON_RESET} variant="contained" onClick={() => resetForm()} startIcon={<ICONS.Delete />} color={"warning"}>
+          <MUI.Button
+            id={HTML_ID.BUTTON_RESET}
+            variant="contained"
+            onClick={() => resetForm()}
+            startIcon={<ICONS.Delete />}
+            color={"warning"}>
             {TEXT.BUTTON_RESET}
           </MUI.Button>
           <MUI.Button id={HTML_ID.BUTTON_SAVE} variant="contained" type={"submit"} startIcon={<ICONS.Send />}>
@@ -82,29 +123,39 @@ const SemesterForm: React.FC<Props> = () => {
 };
 
 const HTML_ID = {
-  BOX: "semester-box",
-  FORM: "semester-form",
-  BUTTONS: "semester-buttons",
+  BOX: "student-box",
+  FORM: "student-form",
+  BUTTONS: "student-buttons",
 
   FIELD_NAME: "name",
+  FIELD_EMAIL: "email",
+  FIELD_PHONE: "phone",
+  FIELD_REGISTRATION: "registration",
 
-  BUTTON_SAVE: "button-semester-form-save",
-  BUTTON_RESET: "button-semester-form-reset",
+  BUTTON_SAVE: "button-student-form-save",
+  BUTTON_RESET: "button-student-form-reset",
 };
 
 const TEXT = {
   LABEL_NAME: "Nome",
+  LABEL_EMAIL: "Email",
+  LABEL_PHONE: "Celular",
+  LABEL_REGISTRATION: "Matricula",
+
   BUTTON_SAVE: "Criar",
   BUTTON_RESET: "Limpar",
 };
 
 const ERROR = {
   NAME: "Nome é obrigatório.",
+  EMAIL: "Email é obrigatório.",
+  PHONE: "Celular é obrigatório.",
+  RESGISTRATION: "Matricula é obrigatória.",
 };
 
 const ALERT = {
-  SUCCESS: "Semestre salvo com sucesso!",
-  FAIL: "Não conseguimos salvar o semestre :-(",
+  SUCCESS: "Aluno(a) salvo com sucesso!",
+  FAIL: "Não conseguimos salvar o aluno(a) :-(",
 };
 
 interface Props {
@@ -116,8 +167,11 @@ interface Feedback {
   fail: boolean;
 }
 
-const INITIAL_VALUES: REQ.SemesterCreated = {
+const INITIAL_VALUES: REQ.StudentCreated = {
   name: "",
+  email: "",
+  phone: "",
+  registration: "",
 };
 
 const INITIAL_FEEDBACK: Feedback = {
@@ -127,6 +181,9 @@ const INITIAL_FEEDBACK: Feedback = {
 
 const schema = Yup.object().shape({
   name: Yup.string().required(ERROR.NAME),
+  email: Yup.string().required(ERROR.EMAIL),
+  phone: Yup.string().required(ERROR.PHONE),
+  registration: Yup.string().required(ERROR.RESGISTRATION),
 });
 
-export default SemesterForm;
+export default StudentCreate;

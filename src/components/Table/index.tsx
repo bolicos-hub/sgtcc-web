@@ -12,6 +12,7 @@ interface Props {
   columns: GridColDef[];
   messageNoRows?: string;
   messageNoResults?: string;
+  getRowId?: string;
 }
 
 interface State {
@@ -27,6 +28,7 @@ const Table: React.FC<Props> = ({
   columns,
   messageNoRows = "Nada para mostrar",
   messageNoResults = "Nenhum Resultado foi encontrado",
+  getRowId = "id",
 }) => {
   const ROWS_PER_PAGE = [5, 10, 20];
   const SIZE = 5;
@@ -44,11 +46,10 @@ const Table: React.FC<Props> = ({
         columns={columns || []}
         pageSize={state.size}
         rowsPerPageOptions={state.rowsPerPage}
-        onPageSizeChange={(pageSize) => {
-          updateState("size", pageSize);
-        }}
         checkboxSelection={true}
         autoHeight={true}
+        getRowId={(row) => row[getRowId]}
+        onPageSizeChange={(pageSize) => updateState("size", pageSize)}
         components={{
           NoRowsOverlay: () => (
             <Stack height="100%" alignItems="center" justifyContent="center">

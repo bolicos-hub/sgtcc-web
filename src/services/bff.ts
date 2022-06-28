@@ -18,8 +18,10 @@ export const BFF = {
   },
   TEACHER: {
     LIST: (): List<RES.TeacherDTO> => GET(E.TEACHERS),
+    CREATE: (body: REQ.TeacherCreated): List<DTO.CreatedText> => POST(E.TEACHERS, body),
   },
   STUDENT: {
     LIST: (): List<RES.StudentDTO> => GET(E.STUDENT),
+    CREATE: (body: REQ.StudentCreated): List<DTO.CreatedText> => POST(E.STUDENT, body),
   },
 };

@@ -12,8 +12,8 @@ import * as RES from "@/models/response";
 import { BFF } from "@/services/bff";
 
 import * as C from "./Constants";
-import ClassForm from "./ClassForm";
-import SemesterForm from "./SemesterForm";
+import ClassCreate from "./ClassCreate";
+import SemesterCreate from "./SemesterCreate";
 
 const Classes: React.FC = () => {
   const firstRender = React.useRef(true);
@@ -68,7 +68,7 @@ const Classes: React.FC = () => {
     ? a11yButton(C.HTML.ID.BUTTON_BACK, C.HTML.LABELLEDBY.BUTTON_BACK, "error", <ICONS.ArrowBack />)
     : a11yButton(C.HTML.ID.BUTTON_ADD, C.HTML.LABELLEDBY.BUTTON_ADD, "success", <ICONS.Add />);
 
-  const TAB_NEW_ITEMS = [generateTabItem("NOVO SEMESTRE", <SemesterForm />), generateTabItem("NOVA TURMA", <ClassForm />)];
+  const TAB_NEW_ITEMS = [generateTabItem("NOVO SEMESTRE", <SemesterCreate />), generateTabItem("NOVA TURMA", <ClassCreate />)];
   const TAB_ITEMS = [
     generateTabItem("SEMESTRES", <Table key={C.HTML.KEY.SEMESTER_TABLE} isLoading={isLoading} columns={C.SEMESTER_COLUMNS} data={state.semesters} />),
     generateTabItem("TURMAS", <Table key={C.HTML.KEY.CLASS_TABLE} isLoading={isLoading} columns={C.CLASS_COLUMNS} data={state.classes} />),

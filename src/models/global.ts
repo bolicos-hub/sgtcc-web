@@ -9,3 +9,7 @@ export type BaseModelDTO = {
 export type Created = {
   id: number;
 };
+
+export type CreatedText = {
+  id: string;
+};

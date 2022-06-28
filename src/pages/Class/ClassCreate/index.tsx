@@ -12,7 +12,7 @@ import * as REQ from "@/models/request";
 import * as RES from "@/models/response";
 import { BFF } from "@/services/bff";
 
-const ClassForm: React.FC<Props> = () => {
+const ClassCreate: React.FC<Props> = () => {
   const firstRender = React.useRef(true);
   const [isLoading, setLoading] = React.useState<boolean>(false);
   const [feedback, setFeedback] = React.useState<Feedback>(INITIAL_FEEDBACK);
@@ -262,4 +262,4 @@ const schema = Yup.object().shape({
   }),
 });
 
-export default ClassForm;
+export default ClassCreate;
